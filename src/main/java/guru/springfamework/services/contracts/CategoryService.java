@@ -1,4 +1,4 @@
-package guru.springfamework.services;
+package guru.springfamework.services.contracts;
 
 import guru.springfamework.api.v1.model.CategoryDTO;
 

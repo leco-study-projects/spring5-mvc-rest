@@ -4,6 +4,8 @@ import guru.springfamework.api.v1.mapper.CategoryMapper;
 import guru.springfamework.api.v1.model.CategoryDTO;
 import guru.springfamework.domain.Category;
 import guru.springfamework.repositories.CategoryRepository;
+import guru.springfamework.services.contracts.CategoryService;
+import guru.springfamework.services.implementation.CategoryServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +19,7 @@ import static org.mockito.Mockito.when;
 
 public class CategoryServiceImplTest {
 
-    public static final String DINNER = "Dinner";
+    private static final String DINNER = "Dinner";
     @Mock
     private CategoryRepository repository;
 

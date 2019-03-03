@@ -1,7 +1,7 @@
 package guru.springfamework.controllers;
 
 import guru.springfamework.api.v1.model.CategoryDTO;
-import guru.springfamework.services.CategoryService;
+import guru.springfamework.services.contracts.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
