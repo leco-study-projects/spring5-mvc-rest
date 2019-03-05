@@ -33,7 +33,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<CustomerDTO> getCustomerByName(String name) {
-        return this.repository.findByFirstName(name).stream().map(mapper::domainToResponse).collect(Collectors.toList());
+        return this.repository.findCustomersByFirstName(name).stream().map(mapper::domainToResponse).collect(Collectors.toList());
     }
 
     @Override

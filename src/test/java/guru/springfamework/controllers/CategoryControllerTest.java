@@ -2,6 +2,7 @@ package guru.springfamework.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import guru.springfamework.api.v1.model.CategoryDTO;
+import guru.springfamework.controllers.api.v1.CategoryController;
 import guru.springfamework.services.contracts.CategoryService;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,8 +34,6 @@ public class CategoryControllerTest {
     @Mock
     private CategoryService categoryService;
 
-    private String json;
-
     private final CategoryDTO response = new CategoryDTO();
 
 
@@ -47,10 +46,6 @@ public class CategoryControllerTest {
 
         response.setName(DINNER);
         response.setId(ID);
-
-        ObjectMapper mapper = new ObjectMapper();
-
-        json = mapper.writeValueAsString(response);
     }
 
     @Test

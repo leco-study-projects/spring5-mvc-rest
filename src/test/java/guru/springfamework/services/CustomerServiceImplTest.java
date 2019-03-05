@@ -12,7 +12,6 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -60,7 +59,7 @@ public class CustomerServiceImplTest {
     @Test
     public void getCustomerByName() {
 
-        when(repository.findByFirstName(NAME)).thenReturn(Collections.singletonList(customer));
+        when(repository.findCustomersByFirstName(NAME)).thenReturn(Collections.singletonList(customer));
 
         List<CustomerDTO> customers = this.service.getCustomerByName(NAME);
         Assert.assertNotNull(customers);
