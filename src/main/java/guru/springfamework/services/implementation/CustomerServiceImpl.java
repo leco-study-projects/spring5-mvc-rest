@@ -40,4 +40,10 @@ public class CustomerServiceImpl implements CustomerService {
     public List<CustomerDTO> getAllCustomers() {
         return this.repository.findAll().stream().map(mapper::domainToResponse).collect(Collectors.toList());
     }
+
+    @Override
+    public CustomerDTO createCustomer(CustomerDTO customer) {
+        Customer saved = this.repository.save(this.mapper.responseToDomain(customer));
+        return this.mapper.domainToResponse(saved);
+    }
 }
