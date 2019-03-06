@@ -3,7 +3,6 @@ package guru.springfamework.controllers;
 import guru.springfamework.api.v1.model.CustomerDTO;
 import guru.springfamework.controllers.api.v1.CustomerController;
 import guru.springfamework.services.implementation.CustomerServiceImpl;
-import org.assertj.core.util.Arrays;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -51,28 +50,19 @@ public class CustomerControllerTest {
     }
 
     @Test
-    public void findCustomerByName() throws Exception {
-        when(this.service.getCustomerByName(NAME)).thenReturn(Collections.singletonList(this.customer));
+    public void findCustomerById() throws Exception {
+        when(this.service.getCustomerById(1)).thenReturn(this.customer);
 
-        mockMvc.perform(get("/api/v1/customers/" + NAME))
+        mockMvc.perform(get("/api/v1/customers/1"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
-                .andExpect(jsonPath("$", hasSize(1)));
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));
     }
 
     @Test
-    public void findCustomerByNameWhenResultIsNull() throws Exception {
-        when(this.service.getCustomerByName(NAME)).thenReturn(null);
+    public void findCustomerByIdWhenResultIsNull() throws Exception {
+        when(this.service.getCustomerById(1)).thenReturn(null);
 
-        mockMvc.perform(get("/api/v1/customers/" + NAME))
-                .andExpect(status().isNotFound());
-    }
-
-    @Test
-    public void findCustomerByNameWhenResultIsEmpty() throws Exception {
-        when(this.service.getCustomerByName(NAME)).thenReturn(new ArrayList<>());
-
-        mockMvc.perform(get("/api/v1/customers/" + NAME))
+        mockMvc.perform(get("/api/v1/customers/1"))
                 .andExpect(status().isNotFound());
     }
 
@@ -98,7 +88,7 @@ public class CustomerControllerTest {
     public void findAllWhenResultIsEmpty() throws Exception {
         when(this.service.getAllCustomers()).thenReturn(new ArrayList<>());
 
-        mockMvc.perform(get("/api/v1/customers/" + NAME))
+        mockMvc.perform(get("/api/v1/customers"))
                 .andExpect(status().isNotFound());
     }
 }

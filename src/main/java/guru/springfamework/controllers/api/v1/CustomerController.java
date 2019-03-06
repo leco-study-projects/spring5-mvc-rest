@@ -22,15 +22,15 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping("/{name}")
-    public ResponseEntity findByCustomerByName(@PathVariable("name") String name) {
-        List<CustomerDTO> customers = this.customerService.getCustomerByName(name);
+    @GetMapping("/{id}")
+    public ResponseEntity findByCustomerByName(@PathVariable Integer id) {
+        CustomerDTO customer = this.customerService.getCustomerById(id);
 
-        if (customers == null || customers.isEmpty()) {
+        if (customer == null) {
             return ResponseEntity.notFound().build();
         }
 
-        return ResponseEntity.ok(customers);
+        return ResponseEntity.ok(customer);
     }
 
     @GetMapping
